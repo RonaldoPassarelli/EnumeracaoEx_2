@@ -61,11 +61,9 @@ public class Order {
 	}
 
 	public String toString() {
-		LocalDateTime inst = getMoment();
-		String timeBefore = inst.toString();
-		String meutempo = (timeBefore.substring(0, 10) + "T" + timeBefore.substring(11, 19));
-		LocalDateTime ftBrazil = LocalDateTime.parse(meutempo);
-		String finalTime = ftBrazil.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
+		String timeBefore = getMoment().toString();
+		String meutempo = timeBefore.substring(0, 19);
+		String finalTime = LocalDateTime.parse(meutempo).format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
 		StringBuilder sb = new StringBuilder();
 		sb.append("Order moment: " + finalTime + "\n");
 		sb.append("Order Status: " + getStatus() + "\n");
